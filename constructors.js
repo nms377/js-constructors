@@ -56,6 +56,7 @@ Spell.prototype.getDetails = function(){
 
 function DamageSpell(name, cost, damage, description){
    Spell.call(this, name, cost, description);
+   this.damage = damage;
 }
 
 DamageSpell.prototype = Object.create(Spell.prototype, {

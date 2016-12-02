@@ -122,6 +122,15 @@ Spellcaster.prototype.inflictDamage = function(damage){
    * @return {boolean} success  Whether mana was successfully spent.
    */
 
+Spellcaster.prototype.spendMana = function(cost){
+   if(this.mana - cost >= 0){
+      this.mana = this.mana - cost;
+      return true;
+   }else{
+      return false;
+   }
+};
+
   /**
    * @method invoke
    *

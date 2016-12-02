@@ -80,12 +80,12 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
  * @method  invoke
  */
 
-// function Spellcaster(name, health, mana){
-//    this.name = name;
-//    this.health = health;
-//    this.mana = mana;
-//    this.isAlive = true;
-// }
+function Spellcaster(name, health, mana){
+   this.name = name;
+   this.health = health;
+   this.mana = mana;
+   this.isAlive = true;
+}
 
   /**
    * @method inflictDamage
@@ -99,7 +99,17 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
    */
 
 Spellcaster.prototype.inflictDamage = function(damage){
-   Spell.call()
+   if(this.health - damage === 0){
+      this.isAlive = false;
+   }else{
+      this.health = this.health - damage;
+      this.isAlive = true;
+   }
+
+   if(this.health < 0){
+      this.health = 0;
+      this.isAlive = false;
+   }
 };
 
   /**

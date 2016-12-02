@@ -11,6 +11,12 @@
  * @method   getDetails
  */
 
+ function Spell(name, cost, description){
+   this.name = name;
+   this.cost = cost;
+   this.description = description;
+ }
+
   /**
    * Returns a string of all of the spell's details.
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
@@ -18,6 +24,10 @@
    * @name getDetails
    * @return {string} details containing all of the spells information.
    */
+
+Spell.prototype.getDetails = function(){
+   return this.name + ' ' + this.cost + ' ' + this.description;
+};
 
 /**
  * A spell that deals damage.
@@ -43,6 +53,8 @@
  * @property {number} damage
  * @property {string} description
  */
+
+
 
 /**
  * Now that you've created some spells, let's create

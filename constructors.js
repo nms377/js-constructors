@@ -160,16 +160,27 @@ Spellcaster.prototype.spendMana = function(cost){
 
    Spellcaster.prototype.invoke = function(spell, target){
    	if(spell instanceof DamageSpell){
-   		if(target.spendMana >= Spell(cost)){
-   			this.mana(Spell.cost);
-   		}
-   		return true;
+         if(target instanceof Spellcaster){
+            if(this.mana >= spell.cost){
+               this.spendMana(spell.cost);
+               target.inflictDamage(spell.damage);
+            }else{
+               return false;
+            }
+            return true;
+         }else{
+            return false;
+         }
+
    	}else{
    		if(spell instanceof Spell){
-   			if(this.mana >= Spell.cost){
-   				this.spendMana(Spell.cost);
-   			}
-   			return true;
+   			if(this.mana >= spell.cost){
+               this.mana = this.mana - spell.cost;
+   				this.spendMana(spell.cost);
+   			}else{
+   			return false;
+            }
+            return true;
    		}else{
    			return false;
    		}
